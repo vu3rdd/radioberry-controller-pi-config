@@ -22,5 +22,6 @@ sudo cp boot/config.txt /boot/config.txt
 To autostart pihpsdr, copy the autostart file.
 
 ```
+mkdir -p ~/.config/autostart
 cp .config/autostart/pihpsdr.desktop ~/.config/autostart/pihpsdr.desktop
 ```
