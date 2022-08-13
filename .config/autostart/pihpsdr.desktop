@@ -1,0 +1,6 @@
+[Desktop Entry]
+Icon=/home/pi/.pihpsdr/hpsdr.png
+Exec=/usr/local/bin/pihpsdr
+Type=Application
+Terminal=false
+Path=/home/pi/.pihpsdr
