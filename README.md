@@ -25,3 +25,11 @@ To autostart pihpsdr, copy the autostart file.
 mkdir -p ~/.config/autostart
 cp .config/autostart/pihpsdr.desktop ~/.config/autostart/pihpsdr.desktop
 ```
+
+## Step 4
+
+Fix the touch input calibration, since we rotated the screen in step 2.
+
+```
+sudo cp etc/X11/xorg.conf.d/*input.conf /etc/X11/xorg.conf.d/
+```
