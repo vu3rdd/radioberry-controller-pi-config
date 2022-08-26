@@ -1,5 +1,16 @@
 # Configuration files for Radioberry based controller board
 
+## Related repositories
+
+* [My PiHPSDR fork](https://github.com/vu3rdd/pihpsdr)
+* [Radioberry controller firmware](https://github.com/vu3rdd/rb_controller)
+
+## IMPORTANT
+
+If you encounter any error, copy the error and paste it into your
+favourite search engine and try to understand the problem. Ham radio
+is all about experimentation and self education.
+
 ## Step 1
 
 Clone the repository
