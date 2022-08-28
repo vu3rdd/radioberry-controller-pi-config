@@ -44,3 +44,11 @@ Fix the touch input calibration, since we rotated the screen in step 2.
 ```
 sudo cp etc/X11/xorg.conf.d/*input.conf /etc/X11/xorg.conf.d/
 ```
+
+## Step 5
+
+Install the modified version of pihpsdr
+
+```
+./pihpsdr_install.sh
+```
