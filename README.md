@@ -42,6 +42,7 @@ cp .config/autostart/pihpsdr.desktop ~/.config/autostart/pihpsdr.desktop
 Fix the touch input calibration, since we rotated the screen in step 2.
 
 ```
+sudo mkdir -p /etc/X11/xorg.conf.d
 sudo cp etc/X11/xorg.conf.d/*input.conf /etc/X11/xorg.conf.d/
 ```
 
