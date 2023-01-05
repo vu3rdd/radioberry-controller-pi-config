@@ -1,38 +1,64 @@
 #!/bin/bash
 
-echo "Installing WDSP library..."
+echo "Installing piHPSDR and dependencies..."
 
 function install_dependency {
     echo "--- Installing dependency: $1"
     sudo apt-get -y install "$1"
 }
 
+install_dependency libtool
+install_dependency automake
+install_dependency autoconf
 install_dependency git
 install_dependency libfftw3-dev
-	
-cd /tmp
-git clone --depth=1 https://github.com/g0orx/wdsp
+install_dependency meson
+install_dependency ninja-build
+
+# cleanup  for a new build everytime
+cd ~
+rm  -rf pihpsdr
+rm  -rf src
+
+mkdir -p src
+cd src
+# cleanup of clonned repo files
+
+rm -rf wdsp
+rm -rf rnnoise
+rm -rf libspecbleach
+
+git clone --depth=1 https://github.com/vu3rdd/rnnoise
+
+echo "Installing rnnoise..."
+cd rnnoise
+git checkout -b buffering origin/buffering
+./autogen.sh
+./configure
+make
+sudo make install
+
+echo "Installing libspecbleach..."
+cd ..
+git clone --depth=1 https://github.com/vu3rdd/libspecbleach
+
+cd libspecbleach
+meson build --buildtype=release --prefix=/usr/local --libdir=lib
+meson compile -C build -v
+sudo meson install -C build
+
+echo "Installing WDSP library..."
+cd ~
+cd src
+git clone --depth=1 https://github.com/vu3rdd/wdsp
 cd wdsp
 make -j 4
 sudo make install
 cd ..
-rm -rf wdsp
-cd ~
 
-echo ""
-echo "WDSP installed."
-
-echo ""
 echo "Installing pihpsdr..."
 echo ""
-echo ""
-	
-function install_dependency {
-    echo "--- Installing dependency: $1"
-    sudo apt-get -y install $1
-}
 
-install_dependency git
 install_dependency libpulse-dev
 install_dependency libgtk-3-dev
 install_dependency libasound2-dev
@@ -44,7 +70,6 @@ install_dependency libi2c-dev
 
 # remove any older pihpsdr source code
 rm -rf src/pihpsdr
-mkdir -p src
 cd src
 git clone https://github.com/vu3rdd/pihpsdr.git
 cd pihpsdr
