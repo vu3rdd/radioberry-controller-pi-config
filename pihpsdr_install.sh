@@ -75,19 +75,19 @@ git clone https://github.com/vu3rdd/pihpsdr.git
 cd pihpsdr
 make -j 4
 sudo make install
-if [ ! -d "/home/pi/.pihpsdr" ]; then
-    mkdir /home/pi/.pihpsdr
+if [ ! -d "$HOME/.pihpsdr" ]; then
+    mkdir "$HOME/.pihpsdr"
 fi
 
-rm /home/pi/Desktop/pihpsdr.desktop
+rm "$HOME/Desktop/pihpsdr.desktop"
 
-file="/home/pi/Desktop/pihpsdr.desktop"
+file="$HOME/Desktop/pihpsdr.desktop"
 echo "[Desktop Entry]" >> $file
-echo "Icon=/home/pi/.pihpsdr/hpsdr.png" >> $file
+echo "Icon=$HOME/.pihpsdr/hpsdr.png" >> $file
 echo "Exec=/usr/local/bin/pihpsdr" >> $file
 echo "Type=Application" >> $file
 echo "Terminal=false" >> $file
-echo "Path=/home/pi/.pihpsdr" >> $file
+echo "Path=$HOME/.pihpsdr" >> $file
 cat $file
 	
 echo ""
