@@ -52,7 +52,7 @@ echo "Installing WDSP library..."
 cd ..
 git clone https://github.com/vu3rdd/wdsp
 cd wdsp
-make -j4
+make NEW_NR_ALGORITHMS=1 -j4
 sudo make install
 cd ..
 
