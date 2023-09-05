@@ -50,9 +50,9 @@ sudo meson install -C build
 echo "Installing WDSP library..."
 cd ~
 cd src
-git clone --depth=1 https://github.com/vu3rdd/wdsp
+git clone https://github.com/vu3rdd/wdsp -b nr-algorithms
 cd wdsp
-make NEW_NR_ALGORITHMS=1 -j 4
+make -j4
 sudo make install
 cd ..
 
