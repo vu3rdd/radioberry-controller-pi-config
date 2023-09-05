@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 set -Eeuo pipefail
-trap cleanup SIGINT SIGTERM ERR EXIT
+# trap cleanup SIGINT SIGTERM ERR EXIT
 
 echo "Installing piHPSDR and dependencies..."
 
