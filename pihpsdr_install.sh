@@ -1,4 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+set -Eeuo pipefail
+trap cleanup SIGINT SIGTERM ERR EXIT
 
 echo "Installing piHPSDR and dependencies..."
 
@@ -16,8 +19,6 @@ install_dependency meson
 install_dependency ninja-build
 
 # cleanup  for a new build everytime
-cd ~
-rm  -rf pihpsdr
 rm  -rf src
 
 mkdir -p src
@@ -48,7 +49,7 @@ meson compile -C build -v
 sudo meson install -C build
 
 echo "Installing WDSP library..."
-cd ~
+cd ..
 cd src
 git clone https://github.com/vu3rdd/wdsp -b nr-algorithms
 cd wdsp
@@ -79,9 +80,12 @@ if [ ! -d "$HOME/.pihpsdr" ]; then
     mkdir "$HOME/.pihpsdr"
 fi
 
-rm "$HOME/Desktop/pihpsdr.desktop"
+if [ -f "$HOME/Desktop/pihpsdr.desktop" ]; then
+    rm "$HOME/Desktop/pihpsdr.desktop"
+fi
 
 file="$HOME/Desktop/pihpsdr.desktop"
+
 echo "[Desktop Entry]" >> $file
 echo "Icon=$HOME/.pihpsdr/hpsdr.png" >> $file
 echo "Exec=/usr/local/bin/pihpsdr" >> $file
