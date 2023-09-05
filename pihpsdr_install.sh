@@ -52,7 +52,7 @@ cd ~
 cd src
 git clone --depth=1 https://github.com/vu3rdd/wdsp
 cd wdsp
-make -j 4
+make NEW_NR_ALGORITHMS=1 -j 4
 sudo make install
 cd ..
 
