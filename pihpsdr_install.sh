@@ -33,7 +33,7 @@ git clone --depth=1 https://github.com/vu3rdd/rnnoise
 
 echo "Installing rnnoise..."
 cd rnnoise
-git checkout -b buffering origin/buffering
+# git checkout -b buffering origin/buffering
 ./autogen.sh
 ./configure
 make
@@ -50,7 +50,6 @@ sudo meson install -C build
 
 echo "Installing WDSP library..."
 cd ..
-cd src
 git clone https://github.com/vu3rdd/wdsp -b nr-algorithms
 cd wdsp
 make -j4
@@ -71,7 +70,6 @@ install_dependency libi2c-dev
 
 # remove any older pihpsdr source code
 rm -rf src/pihpsdr
-cd src
 git clone https://github.com/vu3rdd/pihpsdr.git
 cd pihpsdr
 make -j 4
